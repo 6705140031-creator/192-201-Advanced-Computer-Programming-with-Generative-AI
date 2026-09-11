@@ -1,0 +1,346 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOIg+Ze4ZXOp3c8xmwl7Z5K",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/6705140031-creator/192-201-Advanced-Computer-Programming-with-Generative-AI/blob/main/Week4_class_activity_Inheritance%26Polymorphism\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "AIZe40hEZomp",
+        "outputId": "7d507343-1d57-452d-fdf6-566aeb61760c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "I am a shape.\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Shape:\n",
+        "    def __init__(self, name):\n",
+        "        self.name = name\n",
+        "\n",
+        "    def describe(self):\n",
+        "        print(f'I am a {self.name}.')\n",
+        "\n",
+        "s = Shape('shape')\n",
+        "s.describe()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Square(Shape):\n",
+        "    pass\n",
+        "\n",
+        "sq = Square('square')\n",
+        "sq.describe()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fcWzfbzYaelY",
+        "outputId": "6cda05c8-3df7-4fea-ad5f-5ff02359bba4"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "I am a square.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Rectangle(Shape):\n",
+        "    def __init__(self, width, height):\n",
+        "        super().__init__('rectangle')\n",
+        "        self.width = width\n",
+        "        self.height = height\n",
+        "\n",
+        "r = Rectangle(3, 4)\n",
+        "r.describe()\n",
+        "\n",
+        "print(r.width)\n",
+        "print(r.height)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Xb_0j9aTataz",
+        "outputId": "69341ff4-c14b-4196-c665-23e6afb6afa6"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "I am a rectangle.\n",
+            "3\n",
+            "4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Shape:\n",
+        "    def __init__(self, name):\n",
+        "        self.name = name\n",
+        "\n",
+        "    def area(self):\n",
+        "        return 0\n",
+        "\n",
+        "\n",
+        "class Circle(Shape):\n",
+        "    def __init__(self, radius):\n",
+        "        super().__init__('circle')\n",
+        "        self.radius = radius\n",
+        "\n",
+        "    def area(self):\n",
+        "        return 3.14159 * self.radius ** 2\n",
+        "\n",
+        "\n",
+        "print(Shape('x').area())\n",
+        "print(Circle(5).area())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0UzO9lCFazkY",
+        "outputId": "9a1ef041-0b7e-42a2-be44-ba148cd5b1e5"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0\n",
+            "78.53975\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Rectangle(Shape):\n",
+        "    def __init__(self, width, height):\n",
+        "        super().__init__('rectangle')\n",
+        "        self.width = width\n",
+        "        self.height = height\n",
+        "\n",
+        "    def area(self):\n",
+        "        return self.width * self.height\n",
+        "\n",
+        "\n",
+        "r = Rectangle(3, 4)\n",
+        "print(r.area())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4ZqWb6VJa1wn",
+        "outputId": "921d98e5-2094-47a7-ad96-25505645d776"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "12\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Shape:\n",
+        "    def __init__(self, name):\n",
+        "        self.name = name\n",
+        "\n",
+        "    def area(self):\n",
+        "        return 0\n",
+        "\n",
+        "\n",
+        "class Circle(Shape):\n",
+        "    def __init__(self, radius):\n",
+        "        super().__init__('circle')\n",
+        "        self.radius = radius\n",
+        "\n",
+        "    def area(self):\n",
+        "        return 3.14159 * self.radius ** 2\n",
+        "\n",
+        "\n",
+        "class Rectangle(Shape):\n",
+        "    def __init__(self, width, height):\n",
+        "        super().__init__('rectangle')\n",
+        "        self.width = width\n",
+        "        self.height = height\n",
+        "\n",
+        "    def area(self):\n",
+        "        return self.width * self.height"
+      ],
+      "metadata": {
+        "id": "rdZkuOnnbFoj"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "shapes = [Circle(2), Rectangle(3, 4), Circle(1)]\n",
+        "\n",
+        "for shape in shapes:\n",
+        "    print(f'{shape.name}: area = {shape.area():.2f}')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zAviCP89bG-Q",
+        "outputId": "6a0472ca-7751-4464-afe4-3990474a59fc"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "circle: area = 12.57\n",
+            "rectangle: area = 12.00\n",
+            "circle: area = 3.14\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Triangle(Shape):\n",
+        "    def __init__(self, base, height):\n",
+        "        super().__init__('triangle')\n",
+        "        self.base = base\n",
+        "        self.height = height\n",
+        "\n",
+        "    def area(self):\n",
+        "        return 0.5 * self.base * self.height\n",
+        "shapes = [\n",
+        "    Circle(2),\n",
+        "    Rectangle(3, 4),\n",
+        "    Circle(1),\n",
+        "    Triangle(4, 5)\n",
+        "]\n",
+        "\n",
+        "for shape in shapes:\n",
+        "    print(f'{shape.name}: area = {shape.area():.2f}')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_lEH3mnxbVul",
+        "outputId": "749a00e9-0174-4eb7-d674-59947bb4f644"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "circle: area = 12.57\n",
+            "rectangle: area = 12.00\n",
+            "circle: area = 3.14\n",
+            "triangle: area = 10.00\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def total_area(shapes):\n",
+        "    total = 0\n",
+        "\n",
+        "    for shape in shapes:\n",
+        "        total += shape.area()\n",
+        "\n",
+        "    return total"
+      ],
+      "metadata": {
+        "id": "K1dyG03Bbevt"
+      },
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "my_shapes = [Circle(2), Rectangle(3, 4)]\n",
+        "\n",
+        "print(round(total_area(my_shapes), 2))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "K_q0De8Pbiqu",
+        "outputId": "25fd0dca-2edf-43e9-e381-87c9bd32bf42"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "24.57\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
